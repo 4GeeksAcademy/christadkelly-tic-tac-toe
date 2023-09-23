@@ -1,0 +1,38 @@
+$background: #595959;
+$border: #808080;
+$headings: #f2f2f2;
+$markers: #8c8c8c;
+
+body {
+    background-color: $background;
+    color: $headings;
+    text-align: center;
+}
+
+h1, h3 {
+    margin: 50px;
+}
+
+.container {
+    width: 450px;
+    color: $markers;
+    font-size: 100px;
+    font-weight: bold;
+
+    .row {
+        div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150px;
+
+            &:first-child, &:nth-child(2) {
+                border-right: 3px solid $border;
+            }
+        }
+        &:first-child, &:nth-child(2) {
+            border-bottom: 3px solid $border;
+        }
+
+    }
+}

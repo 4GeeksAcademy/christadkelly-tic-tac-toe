@@ -1,25 +1,39 @@
-import React from "react";
-
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+import React, { useState } from "react";
+import Title from "./title"
+import PlayerMessage from "./playerMessage";
+import Grid from "./grid";
 
 //create your first component
 const Home = () => {
+	const [turn, setTurn] = useState ('X');
+	const [message, setMessage] = useState("It is X's turn!")
+
+	const turnChanger = () => {
+		if (turn === 'X') {
+			setTurn('O');
+			setMessage("It is O's turn!");
+		} else {
+			setTurn('X');
+			setMessage("It is X's turn!");
+		}
+	}
+
+	const clickHandler = (e) => {
+		if(e.target.innerHTML === ''){
+			turn === 'X' ? e.target.innerHTML = 'X' : e.target.innerHTML = 'O';
+			turnChanger(e);
+		}
+	}
+
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div>
+			<Title />
+			<PlayerMessage 
+				message = {message}/>
+			<Grid 
+				clickHandler= {clickHandler}/>
 		</div>
+		
 	);
 };
 
