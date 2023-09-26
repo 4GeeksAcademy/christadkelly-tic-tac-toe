@@ -1,5 +1,5 @@
 $background: #595959;
-$border: #808080;
+$background2: #3f3f3f;
 $headings: #f2f2f2;
 $markers: #8c8c8c;
 
@@ -9,30 +9,72 @@ body {
     text-align: center;
 }
 
-h1, h3 {
-    margin: 50px;
+h1 { margin: 20px;}
+
+h3 { margin-bottom: 50px;}
+
+button {
+    margin: 10px;
 }
 
-.container {
-    width: 450px;
+// .container {
+//     background-color: $background2;
+//     padding: 20px;
+
+//     h3{margin: 10px;}
+
+//     input {margin: 10px;}
+
+//     button {
+//         height: 100px;
+//         width: 100px;
+//         margin: 10px 50px 10px 50px;
+//         background-color: black;
+//         border: none;
+//         color:white;
+//         font-size: 50px;
+//     }
+// }
+
+.container-fluid {
+    width: 474px;
     color: $markers;
     font-size: 100px;
     font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 
-    .row {
-        div{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 150px;
+    .tile{ 
+        height: 150px;
+        width: 150px; 
+        border-style: outset;
 
-            &:first-child, &:nth-child(2) {
-                border-right: 3px solid $border;
-            }
-        }
-        &:first-child, &:nth-child(2) {
-            border-bottom: 3px solid $border;
+        &:nth-child(3n+1) {
+            border-left: none;
         }
 
-    }
+        &:nth-child(3n) {
+            border-right: none;
+        }
+
+        &:nth-child(1), &:nth-child(2), &:nth-child(3) {
+            border-top: none;
+        }
+        
+        &:nth-child(7), &:nth-child(8), &:nth-child(9) {
+            border-bottom: none;
+        }
+    } 
+}
+
+button {
+    background-color: $background2;
+    color: $headings;
+    margin-top: 20px;
+    width: 150px;
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 8px;
 }
