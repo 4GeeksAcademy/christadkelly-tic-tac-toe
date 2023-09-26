@@ -17,18 +17,6 @@ const Home = () => {
 		}
 	};
 
-	const clickHandler = (e) => {
-		if(e.target.innerHTML === ''){
-			turn === 'X' ? e.target.innerHTML = 'X' : e.target.innerHTML = 'O';
-			turnChanger(e);	
-		}
-		let loc = e.target.id;
-		let currentBoard = board;
-		currentBoard.splice(loc, 1, turn);
-		setBoard(currentBoard);
-		checkWin(board);
-	};
-
 	const checkWin = (board) => {
 		const winPatterns = [
 			[0, 1, 2], [3, 4, 5], [6, 7, 8],
@@ -39,12 +27,23 @@ const Home = () => {
 		for(let pattern of winPatterns) {
 			let [a, b, c] = pattern;
 			if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-				console.log(board[a]);
 				setMessage(board[a]+" wins!") 
 			}
 		}
 		return null;
 	}
+
+	const clickHandler = (e) => {
+		if(e.target.innerHTML === ''){
+			turn === 'X' ? e.target.innerHTML = 'X' : e.target.innerHTML = 'O';
+		}
+		const loc = e.target.id;
+		const currentBoard = board;
+		currentBoard.splice(loc, 1, turn);
+		setBoard(currentBoard);
+		turnChanger(e);	
+		checkWin(board);
+	};
 
 	const reset = () => {
 		setTurn('X');
@@ -72,7 +71,6 @@ const Home = () => {
 				<button onClick={reset}>Reset Game!</button>
 			</div>
 		</div>
-		
 	);
 };
 
