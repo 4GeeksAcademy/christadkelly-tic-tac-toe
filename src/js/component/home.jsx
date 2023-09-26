@@ -36,7 +36,7 @@ const Home = () => {
 	const clickHandler = (e) => {
 		if(e.target.innerHTML === ''){
 			turn === 'X' ? e.target.innerHTML = 'X' : e.target.innerHTML = 'O';
-		}
+		} else return null;
 		const loc = e.target.id;
 		const currentBoard = board;
 		currentBoard.splice(loc, 1, turn);
